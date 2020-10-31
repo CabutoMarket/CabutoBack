@@ -116,11 +116,12 @@ def eliminar_producto(request,id_producto):
 	return redirect("/productos")
 
 def agregar_politica(request):
-	data_empresa=Empresa.objects.get(pk=1)
+	#data_empresa=Empresa.objects.get(pk=1)
 	if request.method == 'POST':
 		name = request.POST.get('nombre', None)
 		description = request.POST.get('descripcion', None)
-		data_politica = Politica(nombre=name, descripcion=description, id_empresa=data_empresa)
+		#data_politica = Politica(nombre=name, descripcion=description, id_empresa=data_empresa)
+		data_politica = Politica(nombre=name, descripcion=description)
 		data_politica.save()
 		return render(request,"Politica/politica.html")
 	if request.method=="GET":
