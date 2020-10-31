@@ -68,6 +68,10 @@ class Producto(models.Model):
 	id_categoria=models.ForeignKey(Categoria,on_delete=models.SET_NULL, null=True)
 	def __str__(self):
 		return self.nombre
+	@property
+	def photo_url(self):
+		if self.image and hasattr(self.image, 'url'):
+			return self.image.url
 
 
 
@@ -105,8 +109,7 @@ class Combo_Producto(models.Model) :
 	id_combo=models.ForeignKey(Combo, on_delete=models.SET_NULL, null=True)
 	id_producto=models.ForeignKey(Producto, on_delete=models.SET_NULL, null=True)
 	id_establecimiento=models.ForeignKey(Establecimiento, on_delete=models.SET_NULL, null=True)
-	def __str__(self):
-		return self.id_comboxproducto
+
 
 
 
@@ -117,8 +120,7 @@ class Carrito(models.Model):
 	id_cliente=models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True)
 	id_combo=models.ForeignKey(Combo, on_delete=models.SET_NULL, null=True)
 	id_establecimiento=models.ForeignKey(Establecimiento, on_delete=models.SET_NULL, null=True)
-	def __str__(self):
-		return self.id_carrito
+
 
 
 
@@ -128,5 +130,20 @@ class Detalle_Carrito(models.Model):
 	precio=models.FloatField()
 	id_producto = models.ForeignKey(Producto, on_delete=models.SET_NULL, null=True)
 	id_carrito = models.ForeignKey(Carrito, on_delete=models.SET_NULL, null=True)
-	def __str__(self):
-		return self.id_detallexcarrito
+
+
+
+class Establecimiento_Producto(models.Model):
+	id_estabxprod=models.AutoField(primary_key=True)
+	stock_disponible=models.IntegerField()
+	stock_despacho=models.IntegerField()
+	id_establecimiento=models.ForeignKey(Establecimiento, on_delete=models.SET_NULL, null=True)
+	id_producto=models.ForeignKey(Producto, on_delete=models.SET_NULL, null=True)
+
+
+class Politica(models.Model):
+	id_politica=models.AutoField(primary_key=True)
+	nombre=models.CharField(max_length=100)
+	descripcion=models.CharField(max_length=100)
+	fecha=models.DateField(default=datetime.today)
+	id_empresa=models.ForeignKey(Empresa, on_delete=models.SET_NULL, null=True)

@@ -26,9 +26,11 @@ function verificarCampos() {
 	return verificacion
 }
 
-var $ = JQuery.noConflict();
-function abrir_agregar_producto(url){
-    $('#agregar').load(url, function(){
-      $(this).modal('show');
+$(document).on("click", ".btn-modal", function (e) {
+    e.preventDefault();
+    var $popup = $("#popup");
+    var popup_url = $(this).data("popup-url");
+    $(".modal-body", $popup).load(popup_url, function () {
+      $popup.modal("show");
     });
-}
+  });

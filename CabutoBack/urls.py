@@ -26,7 +26,7 @@ urlpatterns = [
     path('',include('aplicaciones.administracion.urls')),
     path('administracion/',include('aplicaciones.administracion.urls')),
     path('movil/',include('aplicaciones.movil.urls')),   
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # por defecto va a la parte del movil

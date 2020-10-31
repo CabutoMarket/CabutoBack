@@ -1,9 +1,10 @@
-{% load static %}
-{% include 'Shared/sidebar.html' %}
-{% include 'Shared/navbar.html' %}
+{% load static %} {% include 'Shared/header.html' %} {% include 'Shared/navbar.html' %} {% include 'Shared/sidebar.html' %}
 <style>
     h2 {
-        padding: 5% 0% 5% 5%;
+        padding: 5% 0% 0% 5%;
+        color: #0F195E;
+        font-family: calibri;
+        font-weight: bold;
     }
     .img-borrar{
       width: 1rem;
@@ -12,11 +13,49 @@
     .img-producto{
       width: 3.5rem;
     }
+
+    table{
+        margin-top: 2rem;
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+
+    thead{
+        color:white;
+        background-color: #FE3A00;
+        font-family: calibri;
+        text-align: center;
+    }
+
+    table th:first-child{
+        border-radius:10px 0 0 10px;
+    }
+
+    table th:last-child{
+        border-radius:0 10px 10px 0;
+    }
+
+    .btn-modal{
+        color: white;
+        background: linear-gradient(to right, #2153FF, #0F195E);
+    }
+
+    .add{
+        float: right;
+        padding-bottom: 2rem;
+    }
+
+    td {
+        font-family: calibri;
+        vertical-align:middle !important;
+        text-align: center;
+    }
+
 </style>
 <div class="row">
-  <div class="col-md-12">
-    <h2>Productos</h2>
-    <button class="btn btn-sucess" data-toggle="modal" onclick="Productos/añadir_producto.html">Agregar</button>
+  <div class="col-md-10 center">
+    <h2>PRODUCTOS</h2>
+      <a class="btn btn-lg add" href="añadir_productos/"><button class="btn btn-sucess btn-modal" data-toggle="modal">Agregar</button></a>
     <table class="table">
       <thead>
         <tr>
@@ -30,12 +69,13 @@
       <tbody>
         {% for data in datos %}
           <tr>
-            <td><img class="img-producto" src={{data.image.url}}></td>
-            <td>{{data.nombre}}</td>
-            <td>$ {{data.precio}}</td>
+
+            <td><a class="btn btn-lg" href="editar_producto/{{ data.id_producto.id_producto }}"><img class="img-producto" src={{data.id_producto.photo_url}}></a></td>
+            <td>{{data.id_producto.nombre}}</td>
+            <td>$ {{data.id_producto.precio}}</td>
             <!--<td>{{data.image}}</td>-->
-            <td>300</td>
-            <td><img class="img-borrar" src="{% static 'img/iconos_administrador/borrar.png' %}"></td>
+            <td>{{data.stock_disponible}}</td>
+            <td><a class="btn btn-sm" href="eliminar_producto/{{ data.id_producto.id_producto }}"><img class="img-borrar" src="{% static 'img/iconos_administrador/borrar.png' %}"></a></td>
           </tr>
         {% endfor %}
       </tbody>

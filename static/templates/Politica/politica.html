@@ -1,0 +1,52 @@
+{% load static %} {% include 'Shared/header.html' %} {% include 'Shared/navbar.html' %} {% include 'Shared/sidebar.html' %}
+
+<style>
+    h2{
+        color: #0F195E;
+        padding: 5% 0% 0% 5%;
+        font-weigth: bold !important;
+    }
+
+    .input-container{
+        padding: 2% 15% 2% 15%;
+        text-align: center;
+    }
+
+    #guardar-btn{
+        margin: auto;
+        text-align: center;
+        display:block;
+        background: linear-gradient(to right, #2153FF, #0F195E);
+        color: white;
+    }
+
+    textarea[name="descripcion"]{
+        height: 20rem;
+        background-color:#D8D9DD;
+
+    }
+
+    input[name="nombre"] {
+        background-color:#D8D9DD;
+    }
+
+
+
+</style>
+<h2>POLÍTICAS DE USO</h2>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data" class="col-md-12">
+        {% csrf_token %}
+            <div class="col-md-12">
+                    <div class="input-container">
+					    <label>Nombre</label>
+					    <input type="text" class="form-control input" name="nombre" required>
+				    </div>
+                    <div class="input-container">
+					    <textarea class="form-control input" name="descripcion" required></textarea>
+                    </div>
+            </div>
+            <button class="btn btn-sucess" id="guardar-btn" type="submit">Agregar</button>
+
+    </form>
+</body>

@@ -122,6 +122,7 @@
     <div id="padre">
         <div id="simple-container">
             <form action="" method="post">
+                {% csrf_token %}
                 <div id="logo-img-container" class="form-row col-md-12">
                     <div class="col-md-8 form-group">
                         <img id="logo" src="{% static 'img/cabuto.png' %}">
@@ -130,14 +131,14 @@
 
                 <div class="form-row col-md-12">
                     <div class="col-md-4 form-group contTexto">
-                        <input id="id_correo" type="text" class="cajaTexto form-control" placeholder="Correo electrónico">
+                        <input id="id_correo" type="text" class="cajaTexto form-control" placeholder="Correo electrónico" name="correo">
 
                     </div>
                 </div>
 
                 <div class="form-row col-md-12">
                     <div class="col-md-4 form-group contTexto">
-                        <input id="id_password" type="password" class="cajaTexto form-control" placeholder="Contraseña">
+                        <input id="id_password" type="password" class="cajaTexto form-control" placeholder="Contraseña" name="passwd">
                     </div>
                 </div>
 
