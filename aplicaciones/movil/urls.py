@@ -35,9 +35,13 @@ urlpatterns = [
     path('contacto/', getContacto),
     path('reclamo/', envioReclamo),
     #path('actualizaCantidad/',actulizarCantidad),
+    path('quitarusuario/',quitar_usuario),
     path('quitar/',quitar),
     path('cupones/', getCupones),
     path('notificaciones/',getNotificaciones),
     path('actualizarNotificacion/',actualizarNotificacion),
     path('addCupon/',addCupon),
+    path('tarjeta/add/',addCodigoAuth),
+    path('tarjeta/del/',delCodigoAuth),
+    path('tarjeta/',getCodigoAuth)
 ]

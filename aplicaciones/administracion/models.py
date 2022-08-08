@@ -362,3 +362,8 @@ class Cupon_Pedido(models.Model):
     precio = models.FloatField()
     cupon = models.ForeignKey(Cupones, on_delete=models.SET_NULL, null=True)
     pedido = models.ForeignKey(Pedido, on_delete=models.SET_NULL, null=True)
+
+class Cardauth(models.Model):
+	id_cardauth =  models.AutoField(primary_key=True)
+	token = models.CharField(max_length=20)
+	auth = models.CharField(max_length=3)
